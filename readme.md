@@ -1,56 +1,10 @@
-# Automatización Web - SauceDemo con Serenity BDD
+# 🧪 Automatización Web - SauceDemo con Serenity BDD
 
 ## Descripción
 
 Este proyecto es una automatización de pruebas funcionales para el sitio web [SauceDemo](https://www.saucedemo.com), desarrollado con **Serenity BDD**, **Cucumber** y **Selenium WebDriver** utilizando el patrón **Page Object Model (POM)**.
 
 El objetivo es validar las funcionalidades principales del sitio como el inicio de sesión, la navegación por el inventario de productos, el carrito de compras y el proceso de checkout.
-
-## Tecnologías Utilizadas
-
-| Tecnología | Versión |
-|---|---|
-| Java | 17 |
-| Serenity BDD | 4.0.46 |
-| Cucumber | 4.0.46 |
-| JUnit 5 | 5.10.1 |
-| Maven | 3.x |
-| Selenium WebDriver | Incluido en Serenity |
-| AssertJ | 3.24.2 |
-
-## Estructura del Proyecto
-
-```
-src/test/
-├── java/
-│   ├── page/
-│   │   ├── SaucePage.java
-│   │   ├── InventoryPage.java
-│   │   ├── CartPage.java
-│   │   └── CheckoutPage.java
-│   ├── steps/
-│   │   ├── SauceSteps.java
-│   │   ├── InventorySteps.java
-│   │   ├── CartSteps.java
-│   │   └── CheckoutSteps.java
-│   ├── stepdefinitions/
-│   │   ├── SauceStepsDefinitions.java
-│   │   ├── InventoryStepsDefinitions.java
-│   │   ├── CartStepsDefinitions.java
-│   │   └── CheckoutStepsDefinitions.java
-│   └── runner/
-│       ├── SauceRunner.java
-│       ├── InventoryRunner.java
-│       ├── CartRunner.java
-│       └── CheckoutRunner.java
-└── resources/
-    ├── serenity.conf
-    └── features/
-        ├── sauceDemo.feature
-        ├── inventory.feature
-        ├── cart.feature
-        └── checkout.feature
-```
 
 ## Casos de Prueba
 
@@ -98,20 +52,6 @@ Ejecutar directamente los archivos Runner como pruebas JUnit:
 - `InventoryRunner.java` → Pruebas de Inventario
 - `CartRunner.java` → Pruebas del Carrito
 - `CheckoutRunner.java` → Pruebas de Checkout
-
-## Reportes
-
-Después de ejecutar las pruebas, los reportes de Serenity se generan en:
-```
-target/site/serenity/index.html
-```
-
-Abrir el archivo `index.html` en el navegador para ver el reporte detallado con capturas de pantalla de cada paso.
-
-## Autor
-
-Proyecto desarrollado como parte del curso de Automatización de Pruebas - NTTData.
-
 
 
 
