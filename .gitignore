@@ -1,0 +1,43 @@
+# Archivos compilados de Maven
+target/
+
+# Archivos de IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Archivos de IDE - Eclipse
+.classpath
+.project
+.settings/
+
+# Archivos de IDE - VS Code
+.vscode/
+
+# Reportes de Serenity
+serenity-reports/
+
+# Logs
+*.log
+logs/
+
+# Archivos del sistema operativo
+Thumbs.db
+.DS_Store
+
+# Archivos de configuración local
+*.local
+.env
+
+# Dependencias descargadas
+node_modules/
+
+# Archivos temporales
+*.tmp
+*.swp
+*~
+
+# Archivos de caché
+.cache/
