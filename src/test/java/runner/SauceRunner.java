@@ -8,10 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features/sauceDemo.feature",
         glue = "stepdefinitions",
-        tags = "@SAUCE-1",
+        tags = "@HappyPath or @UnhappyPath",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 
-
-public class DemoRunner {
+public class SauceRunner {
 }

@@ -1,41 +1,81 @@
 package page;
 
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 
-
-@DefaultUrl("https://www.saucedemo.com")
+@DefaultUrl("https://saucedemo.com")
 public class SaucePage extends PageObject {
 
+    private static final Config configuracion = ConfigFactory.load("serenity.conf");
+
     @FindBy(id = "user-name")
-    WebElementFacade username;
+    WebElementFacade campoUsuario;
 
     @FindBy(id = "password")
-    WebElementFacade password;
+    WebElementFacade campoContrasena;
 
     @FindBy(id = "login-button")
-    WebElementFacade loginButton;
+    WebElementFacade botonLogin;
 
-    @FindBy(css = ".app_logo")
-    private WebElementFacade lblLogo;
+    @FindBy(className = "app_logo")
+    WebElementFacade logoSwagLabs;
 
+    @FindBy(css = "h3[data-test='error']")
+    WebElementFacade mensajeError;
 
-    public void enterUsername(String usernameText) {
-        username.type(usernameText);
+    @FindBy(css = "button.error-button")
+    WebElementFacade botonCerrarError;
+
+    @FindBy(css = "span.title")
+    WebElementFacade tituloProductos;
+
+    public String obtenerUsuarioDesdeConfig(String tipoUsuario) {
+        String clave = "credenciales.usuario." + tipoUsuario;
+        return configuracion.getString(clave);
     }
 
-    public void enterPassword(String passwordText) {
-        password.type(passwordText);
+    public String obtenerContrasenaDesdeConfig() {
+        return configuracion.getString("credenciales.contrasena");
     }
 
-    public void clickLogin() {
-        loginButton.click();
+    public void ingresarUsuario(String textoUsuario) {
+        campoUsuario.type(textoUsuario);
     }
 
-    public void validarLogoPresente(String textoEsperado) {
-        lblLogo.shouldContainText(textoEsperado);
+    public void ingresarContrasena(String textoContrasena) {
+        campoContrasena.type(textoContrasena);
+    }
+
+    public void clickBotonLogin() {
+        botonLogin.click();
+    }
+
+    public void verificarPaginaHome() {
+        logoSwagLabs.waitUntilVisible();
+        if (!logoSwagLabs.isDisplayed()) {
+            throw new AssertionError("El logo de Swag Labs no se muestra en la página Home");
+        }
+    }
+
+    public String obtenerMensajeError() {
+        mensajeError.waitUntilVisible();
+        return mensajeError.getText();
+    }
+
+    public boolean esMensajeErrorVisible() {
+        return mensajeError.isCurrentlyVisible();
+    }
+
+    public void cerrarMensajeError() {
+        botonCerrarError.click();
+    }
+
+    public boolean esTituloProductosVisible() {
+        tituloProductos.waitUntilVisible();
+        return tituloProductos.isDisplayed();
     }
 }
